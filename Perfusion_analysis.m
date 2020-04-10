@@ -71,106 +71,88 @@ for i = 1:N(2)
         warning(['Check on ' a{end} 'DSC']);
     end
 
+        % Select directories from this list first. This is just something weird
+    % with the data.
+    T = table(['PT1319001';'PT1319003';'PT1319004';'PT1319005';'PT1319007';'PT1319009';...
+    'PT1319010';'PT1319011';'PT1319012';'PT1319015';'PT1319016';'PT1319017';'PT1319019';...
+    'PT1319030';'PT1319031';'PT1319032';'PT1319033';'PT1319034';'PT1319035';'PT1319036';...
+    'PT1319037';'PT1319038';'PT1319040';'PT1319051';'PT1319047';'PT1319048';'PT1319052';...
+    'PT1319053';'PT1319055';'PT1319059';'PT1319062';'PT1319063';'PT1319065';'PT1319068';...
+    'PT1319073';]);
+    T2 = table(['PT1319005';'PT1319006';'PT1319007';'PT1319023';'PT1319026'...
+    ;'PT1319027';'PT1319028';'PT1319030';'PT1319031';'PT1319032'...
+    ;'PT1319033';'PT1319034';'PT1319035';'PT1319036';'PT1319037'...
+    ;'PT1319038';'PT1319048';'PT1319051';'PT1319046']);
+    n = size(T);
     
-%     % Select directories from this list first. This is just something weird
-%     % with the data.
-%     T = table(['PT1319001';'PT1319003';'PT1319004';'PT1319005';'PT1319007';'PT1319009';...
-%     'PT1319010';'PT1319011';'PT1319012';'PT1319015';'PT1319016';'PT1319017';'PT1319019';...
-%     'PT1319030';'PT1319031';'PT1319032';'PT1319033';'PT1319034';'PT1319035';'PT1319036';...
-%     'PT1319037';'PT1319038';'PT1319040';'PT1319051';'PT1319047';'PT1319048';'PT1319052';...
-%     'PT1319053';'PT1319055';'PT1319059';'PT1319062';'PT1319063';'PT1319065';'PT1319068';...
-%     'PT1319073';]);
-%     T2 = table(['PT1319005';'PT1319006';'PT1319007';'PT1319023';'PT1319026'...
-%     ;'PT1319027';'PT1319028';'PT1319030';'PT1319031';'PT1319032'...
-%     ;'PT1319033';'PT1319034';'PT1319035';'PT1319036';'PT1319037'...
-%     ;'PT1319038';'PT1319048';'PT1319051';'PT1319046']);
-%     n = size(T);
-%     
-%     T3 = table(['PT1319003';'PT1319052';'PT1319053';'PT1319055';'PT1319059';...
-%         'PT1319060';'PT1319062';'PT1319063';'PT1319064';'PT1319065';...
-%         'PT1319066';'PT1319068';'PT1319073';'PT1319047';'PT1319048']); %for i = 1:14 [96 96 150 5 15]
-% 
-%     T4 = 'PT1319003';
-%
-% level = 1;
-%         for j = [6 ]
-%             if strcmp(tmp.lots_of_dirs{:,i},join([base_dir, '/' T.Var1(j,:)])) == 1
-%                 disp('YAAS')
-%                 try
-%                     [DSC.Data,DSC.Parms,DSC.AIF,DSC.AIFMask,DSC.dR2s,DSC.Perfusion] = conv_CBV_CBF1(DSC.Data);close all
-%                     tempI = make_nii(imrotate3(DSC.Data,-90,[0 0 1]),DSC.Spc,[0 0 0]);
-%                     save_nii(tempI, [pwd  '/' a{end} '_SAGE_.nii'], 0);
-%                 catch
-%                     warning(['Check on ' T.Var1(j,:) ' level ' num2str(level)])
-%                 
-%                 end
-%             end
-%         end
-% level = 2;
-%         for j = [1 7 8 9 10 11 12 13 14 ]
-%             if strcmp(tmp.lots_of_dirs{:,i},join([base_dir, '/' T.Var1(j,:)])) == 1
-%                 disp('YAAS')
-%                 try
-%                     [DSC.Data,DSC.Parms,DSC.AIF,DSC.AIFMask,DSC.dR2s,DSC.Perfusion] = conv_CBV_CBF2(DSC.Data);close all
-%                     tempI = make_nii(imrotate3(DSC.Data,-90,[0 0 1]),DSC.Spc,[0 0 0]);
-%                     save_nii(tempI, [pwd  '/' a{end} '_SAGE_.nii'], 0);
-%                 catch
-%                     warning(['Check on ' T.Var1(j,:) ' level ' num2str(level)])
-%                 
-%                 end
-%             end
-%         end
-% level = 3;
-%         for j = 1:19
-%             if strcmp(tmp.lots_of_dirs{:,i},join([base_dir, '/' T2.Var1(j,:)])) == 1
-%                 disp('YAAS')
-%                 try
-%                     [DSC.Data,DSC.Parms,DSC.AIF,DSC.AIFMask,DSC.dR2s,DSC.Perfusion] = conv_CBV_CBF3(DSC.Data);
-%                     close all
-%                     tempI = make_nii(imrotate3(DSC.Data,-90,[0 0 1]),DSC.Spc,[0 0 0]);
-%                     save_nii(tempI, [pwd  '/' a{end} '_SAGE_.nii'], 0);
-%                 catch
-%                     warning(['Check on ' T2.Var1(j,:) ' level ' num2str(level)])
-%                 
-%                 end
-%             end
-%         end
-% level = 4;
-%         for j = 1:15
-%             if strcmp(tmp.lots_of_dirs{:,i},join([base_dir, '/' T3.Var1(j,:)])) == 1
-%                 disp('YAAS')
-%                 try
-%                     [DSC.Data,DSC.Parms,DSC.AIF,DSC.AIFMask,DSC.dR2s,DSC.Perfusion] = conv_CBV_CBF4(DSC.Data);
-%                     close all
-%                     tempI = make_nii(imrotate3(DSC.Data,-90,[0 0 1]),DSC.Spc,[0 0 0]);
-%                     save_nii(tempI, [pwd  '/' a{end} '_SAGE_.nii'], 0);
-%                 catch
-%                     warning(['Check on ' T3.Var1(j,:) ' level ' num2str(level)])
-%                 
-%                 end
-%             end
-%         end
-%         
-%     disp(['Data Load Completed for ' a{end}]);
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% The registration is done better in Python and I have already written this
-% script.
-%     disp(['Register images for ' a{end}]);
-%     
-%     fsl = getenv('FSLDIR'); %set the path for FSL
-%     unix([fsl '/bin/bet ' a{end} '_T1w_pre_.nii brainT1w_pre.nii -f 0.5 -g 0.4 -m'])
-%     unix([fsl '/bin/bet ' a{end} '_T1w_post_.nii brainT1w_post.nii -f 0.5 -g 0.4 -m'])
-%     unix([fsl '/bin/bet ' a{end} '_T2w_FLAIR_.nii brainT2w_FLAIR.nii -f 0.4 -g 0 -m'])
-%     unix([fsl '/bin/bet ' a{end} '_SAGE_.nii brainSAGE.nii -f 0.4 -g 0 -m'])
-%     
-%     in = 'brainT1w_post.nii';
-%     out = 'AffineReg12p_brainT1wpost2pre.nii';
-%     ref = 'brainT1w_pre.nii';
-%     omat = 'Reg_refT1wpre_inputT1wpost.txt';
-%     opts = ' -bins 256 -cost normmi -searchrx -90 90 -searchry -90 90 -searchrz -90 90 -dof 12  -interp trilinear ';
-%     opts_files = [' -in ' in ' -ref ' ref ' -out ' out ' -omat ' omat];
-%     unix([fsl '/bin/flirt' opts_files opts]);
-%     disp(['Phase 1 Registration Done on ' a{end}])
+    T3 = table(['PT1319003';'PT1319052';'PT1319053';'PT1319055';'PT1319059';...
+        'PT1319060';'PT1319062';'PT1319063';'PT1319064';'PT1319065';...
+        'PT1319066';'PT1319068';'PT1319073';'PT1319047';'PT1319048']); %for i = 1:14 [96 96 150 5 15]
+
+    T4 = 'PT1319003';
+
+level = 1;
+        for j = [6 ]
+            if strcmp(tmp.lots_of_dirs{:,i},join([base_dir, '/' T.Var1(j,:)])) == 1
+                disp('YAAS')
+                try
+                    [DSC.Data,DSC.Parms,DSC.AIF,DSC.AIFMask,DSC.dR2s,DSC.Perfusion] = conv_CBV_CBF1(DSC.Data);close all
+                    tempI = make_nii(imrotate3(DSC.Data,-90,[0 0 1]),DSC.Spc,[0 0 0]);
+                    save_nii(tempI, [pwd  '/' a{end} '_SAGE_.nii'], 0);
+                catch
+                    warning(['Check on ' T.Var1(j,:) ' level ' num2str(level)])
+                
+                end
+            end
+        end
+level = 2;
+        for j = [1 7 8 9 10 11 12 13 14 ]
+            if strcmp(tmp.lots_of_dirs{:,i},join([base_dir, '/' T.Var1(j,:)])) == 1
+                disp('YAAS')
+                try
+                    [DSC.Data,DSC.Parms,DSC.AIF,DSC.AIFMask,DSC.dR2s,DSC.Perfusion] = conv_CBV_CBF2(DSC.Data);close all
+                    tempI = make_nii(imrotate3(DSC.Data,-90,[0 0 1]),DSC.Spc,[0 0 0]);
+                    save_nii(tempI, [pwd  '/' a{end} '_SAGE_.nii'], 0);
+                catch
+                    warning(['Check on ' T.Var1(j,:) ' level ' num2str(level)])
+                
+                end
+            end
+        end
+level = 3;
+        for j = 1:19
+            if strcmp(tmp.lots_of_dirs{:,i},join([base_dir, '/' T2.Var1(j,:)])) == 1
+                disp('YAAS')
+                try
+                    [DSC.Data,DSC.Parms,DSC.AIF,DSC.AIFMask,DSC.dR2s,DSC.Perfusion] = conv_CBV_CBF3(DSC.Data);
+                    close all
+                    tempI = make_nii(imrotate3(DSC.Data,-90,[0 0 1]),DSC.Spc,[0 0 0]);
+                    save_nii(tempI, [pwd  '/' a{end} '_SAGE_.nii'], 0);
+                catch
+                    warning(['Check on ' T2.Var1(j,:) ' level ' num2str(level)])
+                
+                end
+            end
+        end
+level = 4;
+        for j = 1:15
+            if strcmp(tmp.lots_of_dirs{:,i},join([base_dir, '/' T3.Var1(j,:)])) == 1
+                disp('YAAS')
+                try
+                    [DSC.Data,DSC.Parms,DSC.AIF,DSC.AIFMask,DSC.dR2s,DSC.Perfusion] = conv_CBV_CBF4(DSC.Data);
+                    close all
+                    tempI = make_nii(imrotate3(DSC.Data,-90,[0 0 1]),DSC.Spc,[0 0 0]);
+                    save_nii(tempI, [pwd  '/' a{end} '_SAGE_.nii'], 0);
+                catch
+                    warning(['Check on ' T3.Var1(j,:) ' level ' num2str(level)])
+                
+                end
+            end
+        end
+        
+    disp(['Data Load Completed for ' a{end}]);
+
+
     
     disp('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
 end
@@ -1229,26 +1211,4 @@ Perfusion.CBF0_allSE = max(CBFR_allSE,[],4);
 Perfusion.CBF0_allSE(~isfinite(Perfusion.CBF0_allSE)) = 0;
 Perfusion.rMTT0_allSE = Perfusion.rCBV0_allSE./Perfusion.CBF0_allSE;
 Perfusion.rMTT0_allSE(isinf(Perfusion.rMTT0_allSE)) = 0;
-end
-
-function [none] = run_flirt(in_file,out_file,ref_file,omat_file)
-
-fsl = getenv('FSLDIR'); %set the path for FSL
-dirname = pwd;
-
-in = in_file;
-out = out_file;
-ref = ref_file;
-omat = omat_file;
-
-disp(['Registration using ' in ' ' out ' ' ref ' ' omat])
-
-opts = ' -bins 256 -cost normmi -searchrx -90 90 -searchry -90 90 -searchrz -90 90 -dof 12  -interp trilinear ';
-opts_files = [' -in ' in ' -ref ' ref ' -out ' out ' -omat ' omat];
-
-
-unix([fsl '/bin/flirt' opts_files opts]);
-
-disp('Registration Finished')
-
 end
