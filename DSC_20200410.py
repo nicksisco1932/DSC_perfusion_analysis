@@ -110,7 +110,7 @@ def register_everything(path, filename):
             os.system('flirt -bins 256 -cost normmi -searchrx -90 90 -searchry -90 90 -searchrz -90 90 -dof 12 '
                       '-interp trilinear -in %s -out %s'
                       ' -ref %s -omat %s' % (os.path.join(path, out_names[0] + '.gz'),
-                                             os.path.join(path, ' AffineReg12p_brainT1wpre2pre_SAGEres.nii'),
+                                             os.path.join(path, 'AffineReg12p_brainT1wpre2pre_SAGEres.nii'),
                                              os.path.join(path, out_names[3] + '.gz'),
                                              os.path.join(path, 'Reg_refT1wpreSAGE_inputT1wpre.txt')))
     elif not os.path.isfile(os.path.join(path, 'T1w_pre_SAGEres.nii.gz')):
