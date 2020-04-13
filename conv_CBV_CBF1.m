@@ -1,12 +1,5 @@
 function [Data,Parms,AIF,AIFMask,dR2s,Perfusion] = conv_CBV_CBF1(dsc_data_orig)
 Data = dsc_data_orig;
-%    temp = squeeze(reshape(data,[96 96 5 150 15])); Data = permute(temp,[1 2 5 3 4]); % [ 15 5 150 ]
-%         temp = squeeze(reshape(data,[96 96 5 15 150])); Data = permute(temp,[1 2 4 3 5]); % [ 15 5 150 ]
-%       temp = squeeze(reshape(data,[96 96 15 5 150]));Data = permute(temp,[1 2 3 4 5]); % [ 15 5 150 ]
-%       temp = squeeze(reshape(data,[96 96 15 150 5])); Data = permute(temp,[1 2 3 5 4]); % [ 15 5 150 ]
-%       temp = squeeze(reshape(data,[96 96 150 15 5])); Data = permute(temp,[1 2 4 5 3]); % [ 15 5 150 ]
-%       temp = squeeze(reshape(data,[96 96 150 5 15])); Data = permute(temp,[1 2 5 4 3]); % [ 15 5 150 ]
-% Data = permute(temp,[1 2 5 3 4]); % [ 15 5 150 ]
 
 Parms.TR = 1800./1000; %TR in s
 Parms.time = Parms.TR:Parms.TR:Parms.TR*size(Data,5);
