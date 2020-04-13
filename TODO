@@ -1,0 +1,7 @@
+1) re-register all of the data to SAGE. B/c the data was not loaded correctly thanks to dicom2nifti, I had to redo everything and now I'm just waiting to re-register everything.
+
+2) Make CBV, AIF, and CBF maps.
+
+3) Make SE maps
+
+4) update TODO list
